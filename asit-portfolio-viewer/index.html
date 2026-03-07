@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asit Sahoo - Lead SDET Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #4f46e5, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline-container {
+            position: relative;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #e5e7eb;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #4f46e5;
+            border-radius: 50%;
+            top: 24px;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::after {
+            right: -10px;
+        }
+        .right::after {
+            left: -10px;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::after {
+                left: 21px;
+            }
+            .left::after, .right::after {
+                left: 21px;
+            }
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <nav class="fixed w-full bg-white shadow-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">Asit Sahoo</h1>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600">Experience</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600">Skills</a>
+                    <a href="#ai-showcase" class="text-gray-600 hover:text-blue-600">AI Showcase</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600">Projects</a>
+                    <a href="#thought-leadership" class="text-gray-600 hover:text-blue-600">Thought Leadership</a>
+                    <a href="#education" class="text-gray-600 hover:text-blue-600">Education</a>
+                    <a href="#awards" class="text-gray-600 hover:text-blue-600">Awards</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-3">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600">Experience</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600">Skills</a>
+                    <a href="#ai-showcase" class="text-gray-600 hover:text-blue-600">AI Showcase</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600">Projects</a>
+                    <a href="#thought-leadership" class="text-gray-600 hover:text-blue-600">Thought Leadership</a>
+                    <a href="#education" class="text-gray-600 hover:text-blue-600">Education</a>
+                    <a href="#awards" class="text-gray-600 hover:text-blue-600">Awards</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
+            <div class="container mx-auto px-6 text-center">
+                <div class="flex flex-col items-center mb-8">
+                    <img src="image.jpeg" alt="Asit Sahoo" class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mb-6">
+                    <h1 class="text-6xl font-bold mb-6 text-gray-800">Asit Sahoo</h1>
+                    <p class="text-2xl text-gray-600 mb-4">Senior Lead SDET</p>
+                    <p class="text-xl text-gray-600">Automation & GenAI Expert</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-phone mr-2 text-blue-600"></i>
+                        <span>+91 9040293063</span>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-envelope mr-2 text-blue-600"></i>
+                        <a href="mailto:sahooasit@hotmail.com" class="hover:text-blue-600">sahooasit@hotmail.com</a>
+                    </div>
+                    <div class="flex items-center text-gray-700">
+                        <i class="fas fa-map-marker-alt mr-2 text-blue-600"></i>
+                        <span>Pune, India</span>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 mb-8">
+                    <a href="https://www.linkedin.com/in/sahooasit" target="_blank" class="text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/pm-asit-sahoo" target="_blank" class="text-gray-800 hover:text-gray-600">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="Asit Resume_Lead_SDET.docx" id="downloadCV" download class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                        <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+                    <a href="#contact" class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i>Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Professional Summary</h3>
+                        <p class="text-gray-600 mb-6">Experienced Lead SDET with 9+ years of expertise in application testing and designing Hybrid Automation Frameworks for Web, Windows, and APIs. Skilled in CI/CD, agile practices, and building robust GenAI tools. Passionate about automation and framework architecture.</p>
+                        <p class="text-gray-600 mb-6">I specialize in creating efficient automation solutions that enhance productivity and quality assurance processes. My expertise includes developing AI-powered tools that streamline testing workflows and improve team efficiency.</p>
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Automation</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">GenAI</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Framework Design</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">CI/CD</span>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center justify-center">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                            <h3 class="text-xl font-semibold mb-4 text-center text-gray-800">At a Glance</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-briefcase text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Current Position</h4>
+                                        <p class="font-medium">Senior Lead SDET at PubMatic</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-clock text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Experience</h4>
+                                        <p class="font-medium">9+ Years in Testing & Automation</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-code text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Specialization</h4>
+                                        <p class="font-medium">GenAI, Automation Framework Design, Hybrid Automation Frameworks, Vibe Coder</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-robot text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Innovation</h4>
+                                        <p class="font-medium">AI-Powered Testing Solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
+                
+                <!-- Interactive Skills Visualization -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-semibold text-center mb-8">Skills Overview</h3>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="flex flex-col md:flex-row items-center justify-center">
+                            <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                                <canvas id="skillsRadarChart" width="400" height="400"></canvas>
+                            </div>
+                            <div class="w-full md:w-1/2 pl-0 md:pl-8">
+                                <p class="text-gray-600 mb-6">This interactive visualization demonstrates my technical proficiency across various domains. Hover over different areas to see detailed information about my expertise in each category.</p>
+                                <div id="skillDetails" class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                    <h4 class="font-semibold text-blue-700 mb-2">Hover over the chart to see details</h4>
+                                    <p class="text-gray-600">The chart represents my skills across different domains including automation, programming languages, AI/ML, and testing methodologies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Programming Languages -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-code text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Programming Languages</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Python</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">JavaScript</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">C#</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Java</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Automation Frameworks -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-robot text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Automation Frameworks</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Robot Framework</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">PyTest Framework</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">TestNG</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DevOps & CI/CD -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-cogs text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">DevOps & CI/CD</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Jenkins</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Azure DevOps</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Git</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI & ML -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-brain text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">AI & ML</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">GenAI</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Prompt Engineering</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">LLM Integration</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Streamlit</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testing Types -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-vial text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Testing Types</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">UI Automation</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">API Automation</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Windows Automation</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-tools text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Other Skills</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">SQL</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Linux</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Docker</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Skills Tags -->
+                <!-- Additional Skills Categories -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                    <!-- Architect Skills -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-drafting-compass text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Architect Skills</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">POC Development</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">RFP Analysis</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Design Framework</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">QA Infrastructure Design</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Solution Architecture</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Technical Documentation</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testing Frameworks -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-vial text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Testing Frameworks</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">JUnit</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Allure</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">ExtentReports</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">REST Assured</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Software Engineering -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-code-branch text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Software Engineering</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">SOLID Principles</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Design Patterns</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Test-Driven Development</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Clean Code</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DevOps Tools -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-server text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">DevOps Tools</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Bash Scripting</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Groovy</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Kubernetes</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Framework Development -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-tools text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Framework Development</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Architecture Design</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Page Object Model</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Data-Driven Design</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Keyword-Driven</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Testing -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-tachometer-alt text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Performance Testing</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">JMeter</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">LoadRunner</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Gatling</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Load Testing</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Security Testing</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- API Testing -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-exchange-alt text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">API Testing</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">REST API</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Postman</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">SOAP</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">GraphQL</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Technologies -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-code text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Web Technologies</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">HTML</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">CSS</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leadership & Soft Skills -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Leadership & Soft Skills</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Leadership</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Mentoring</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="mt-12">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Additional Expertise</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">BDD</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Cucumber</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Specflow</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">NUnit</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">TestStack.White</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Selenium</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Rest Assured</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">POC Development</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RFP Analysis</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Design Framework</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">QA Infrastructure Design</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Solution Architecture</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Technical Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Professional Experience</h2>
+                
+                <!-- PubMatic -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Senior Lead SDET</h3>
+                            <p class="text-lg text-blue-600">PubMatic</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Pune</p>
+                            <p class="text-gray-600"><i class="fas fa-calendar mr-2"></i>Nov 2021 - Present</p>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Involved in writing automation scripts for multiple products using Robot and PyTest frameworks.</li>
+                        <li>Designed, built, and maintained a comprehensive PyTest framework.</li>
+                        <li>Enhanced productivity and efficiency for Dev & QA teams by implementing multiple Jenkins tools with a left shift approach.</li>
+                        <li>Designed and implemented an advanced AI-powered chatbot to assist publishers, solution engineers & internal engineering team in automating routine tasks and enhancing productivity using GenAI technologies including RAG, LangChain, LangGraph, Langfuse, Transformers, Hugging Face models, MCP server, and agentic frameworks for autonomous & real-time decision-making.</li>
+                        <li>Developed a Test Case Generator using Gen AI and Streamlit that integrates with Jira, Confluence & user inputs and automatically generates test cases.</li>
+                        <li>Streamlined code review process by integrating Bito code review agent in Git, resulting in automated pull request reviews.</li>
+                        <li>Developed a comprehensive automation framework to facilitate cross-functional team integration testing without requiring manual intervention.</li>
+                        <li>Defined and tracked quality assurance metrics, including test results, defect counts, and performance discrepancies.</li>
+                        <li>Integrated local QA Jenkins pipeline to Dev Centralized Jenkins CI pipeline.</li>
+                        <li>Maintained traceability matrix, shared test summary reports on a weekly basis.</li>
+                        <li>Managed various BHAG projects within the SDET organization including GenAI, Code Coverage, and Grafana dashboard logging.</li>
+                        <li>Demonstrated hands-on experience in SQL, Unix, Docker, Selenium, and API testing.</li>
+                        <li>Streamlined and optimized the testing process, achieving a significant reduction in execution time for more than 2000 test cases – from an average of 6 hours down to only 1 hour.</li>
+                        <li>Managed SDET team of 5 as team lead.</li>
+                        <li>Contributed many features to Prebid.js open source repo which deals with programmatic advertisement.</li>
+                        <li>Collaborated with cross-functional team members, including product owners and developers to develop effective testing strategies and deliverables.</li>
+                    </ul>
+                </div>
+                
+                <!-- Pegasystems -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Senior SDET</h3>
+                            <p class="text-lg text-blue-600">Pegasystems</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Hyderabad</p>
+                            <p class="text-gray-600"><i class="fas fa-calendar mr-2"></i>Jan 2019 - Oct 2021</p>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Involved in developing automation frameworks for multiple projects and adding new test scripts for new features through Selenium on Hybrid framework using Specflow, POM design pattern and NUNIT.</li>
+                        <li>Responsibilities include preparing test plans, mentoring QA team members, grooming user stories, writing test scenarios, preparing test environment, creating/maintaining/ enhancing automation scripts, test execution, defect tracking, generating QA reports & metrics and documentation review.</li>
+                        <li>Identify feasible, testable events and develop the automation test scripts.</li>
+                        <li>Defined and tracked quality assurance metrics, including test results, defect counts and performance discrepancies.</li>
+                        <li>Reduced overall testing hours by 30% by writing and optimizing automation test scripts.</li>
+                        <li>Work with development teams to support multiple testing efforts simultaneously.</li>
+                        <li>Developed applications using WPF and WinForms to ease the data generation.</li>
+                        <li>Assurance of product quality through following best practices, code inspections, peer reviews, unit testing and other forms of engineering excellence.</li>
+                        <li>Developed test plan and test cases; Performed test execution, defect reporting & reverification.</li>
+                        <li>Maintained traceability matrix, Shared Test summary reports on weekly basis.</li>
+                        <li>Implemented CI/CD pipeline using Jenkins.</li>
+                        <li>Actively involved with Knowledge Sharing, Walkthrough Sessions, and test script reviews.</li>
+                    </ul>
+                </div>
+                
+                <!-- TCS -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Systems Engineer</h3>
+                            <p class="text-lg text-blue-600">Tata Consultancy Services</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Hyderabad</p>
+                            <p class="text-gray-600"><i class="fas fa-calendar mr-2"></i>Jul 2016 - Jan 2019</p>
+                        </div>
+                    </div>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Involved in enhancing of test automation framework and developed automated tests using Selenium, Java hybrid framework.</li>
+                        <li>Wrote, reviewed, and optimized test cases to maximize success of manual software testing with consistent, thorough approaches.</li>
+                        <li>Automated test cases using Selenium with Hybrid framework and POM design pattern.</li>
+                        <li>Automated API test cases using Rest Assured.</li>
+                        <li>Responsible for developing test plan, test procedures and test data.</li>
+                        <li>Identification of Reusable Components in the framework.</li>
+                        <li>Responsible for generating test Report, reporting test results and bugs.</li>
+                        <li>Handled regression test execution for both Manual and automation which involved executing manual test cases, automation regression suite, defect logging and reporting.</li>
+                        <li>Collaborated with dev team and Onsite counter parts to stay current on product features and intended functionality.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Showcase Section -->
+        <section id="ai-showcase" class="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">AI Innovation Showcase</h2>
+                    <p class="text-xl text-gray-300">Explore my cutting-edge AI implementations and their impact</p>
+                </div>
+                
+                <div id="ai-showcase-container" class="relative">
+                    <!-- AI Showcase content will be dynamically loaded here by ai-showcase.js -->
+                    <div class="text-center py-8">
+                        <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mb-4"></div>
+                        <p class="text-lg">Loading AI showcase...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Projects</h2>
+                    <p class="text-xl text-gray-600">Explore my latest work and contributions</p>
+                </div>
+                
+                <!-- Project 1: Interactive Portfolio Website -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="javascript,html">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Interactive Portfolio Website</h3>
+                            <p class="text-lg text-blue-600">You're Looking At It Right Now! 🚀</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">Surprise! The website you're currently exploring is one of my projects. If you're impressed by the interactive features, slick animations, and intuitive design – you're in the right place! This isn't your average static portfolio.</p>
+                        <p class="text-gray-600 mb-4">I've built this portfolio to showcase not just <em>what</em> I can do, but <em>how</em> I approach problems – with creativity, technical excellence, and a touch of fun. Go ahead, try the skills search at the top, chat with the AI assistant in the corner, or play with the 3D project cards!</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">TailwindCSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Chart.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">AI Integration</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Interactive Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>AI-powered portfolio assistant for answering questions about my experience</li>
+                            <li>Interactive skills visualization with radar charts and detailed breakdowns</li>
+                            <li>3D tilt effect on project cards with dynamic filtering</li>
+                            <li>Skill search functionality with instant results</li>
+                            <li>Custom resume builder for recruiters</li>
+                            <li>Career path recommendation system</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Prebid.js -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="javascript,opensource">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Prebid.js</h3>
+                            <p class="text-lg text-blue-600">Open Source Contributor</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <a href="https://github.com/prebid/Prebid.js" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition duration-300">
+                                <i class="fab fa-github mr-2"></i>View Project
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">Prebid.js is the most widely used header bidding solution in the industry. It's a JavaScript library that enables publishers to implement header bidding on their websites, allowing multiple demand sources to bid on their inventory simultaneously before making ad requests to their ad server.</p>
+                        <p class="text-gray-600">I have contributed numerous features to Prebid.js, enhancing its functionality and performance for publishers worldwide.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Gulp</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Karma</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Mocha</span>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">My Contributions</h4>
+                        <a href="https://github.com/prebid/Prebid.js/pulls?q=is%3Apr+author%3Apm-asit-sahoo+is%3Aclosed%2Copen" target="_blank" class="text-blue-600 hover:underline">
+                            <i class="fas fa-code-branch mr-2"></i>View My Pull Requests
+                        </a>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Benefits</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Increased publisher revenue through optimized header bidding</li>
+                            <li>Enhanced performance and speed for ad delivery</li>
+                            <li>Greater control over ad inventory for publishers</li>
+                            <li>Transparent auction process for better yield management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Universal Test Case Generator -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="python,ai,testing">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Universal Test Case Generator</h3>
+                            <p class="text-lg text-blue-600">AI-Powered Testing Tool</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">A cutting-edge tool designed to streamline the testing process. This innovative platform integrates Confluence and Jira, allowing you to consolidate spike documents, product templates, and acceptance criteria all in one place to effortlessly generate test cases.</p>
+                        <p class="text-gray-600">The tool is tailored to display test case formats specific to each team's requirements, ensuring relevance and clarity across different projects.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Streamlit</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">OpenAI API</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Jira API</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Confluence API</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Key Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Unified Platform: Combines documentation from Confluence and Jira for comprehensive test case generation</li>
+                            <li>Customized Test Case Formats: Adapts to different team preferences, ensuring relevance and clarity</li>
+                            <li>Efficiency Boost: Saves time and enhances accuracy by automating the test case creation process</li>
+                            <li>Complete Package: Generates all test cases in a downloadable zip file</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 3: AI-Powered Chatbot -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="python,javascript,ai">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">AI-Powered Prebid Chatbot</h3>
+                            <p class="text-lg text-blue-600">Slack Integration</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">An intelligent chatbot integrated with Slack to handle all operations related to Prebid and OpenWrap. The bot assists in finding monetization gaps and opportunities for publishers, guides page setup, answers questions, performs bid enrichment analysis, generates natural language SQL queries, analyzes different releases, and provides code suggestions.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">OpenAI API</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Claude API</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Slack API</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Key Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Monetization Gap Analysis: Identifies opportunities for revenue improvement</li>
+                            <li>Page Setup Guidance: Provides step-by-step instructions for optimal implementation</li>
+                            <li>Bid Enrichment Analysis: Analyzes bid data to improve auction performance</li>
+                            <li>Natural Language SQL Generator: Converts plain English to SQL queries</li>
+                            <li>Release Analysis: Compares different versions and highlights changes</li>
+                            <li>Code Suggestions: Provides optimized code snippets for implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Intelligent Climate Dashboard -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="javascript">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Intelligent Climate & Weather Dashboard</h3>
+                            <p class="text-lg text-blue-600">Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">A comprehensive dashboard providing an overview of all climate and weather-related information across the globe. Users can find anomalies, carbon footprint data, temperature trends, weather news, and more in one centralized location.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Weather APIs</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Data Visualization</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Planned Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Global Climate Monitoring: Track climate changes and anomalies worldwide</li>
+                            <li>Carbon Footprint Tracking: Monitor carbon emissions and environmental impact</li>
+                            <li>Temperature Analysis: View historical and current temperature trends</li>
+                            <li>Weather News Aggregation: Get the latest weather-related news from around the world</li>
+                            <li>Interactive Maps: Visualize climate data through interactive global maps</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 5: 2048 Game -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="javascript">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">2048 Game</h3>
+                            <p class="text-lg text-blue-600">Web-based Game</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">A web implementation of the popular 2048 puzzle game, where players combine numbered tiles to reach the 2048 tile.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Responsive Design: Playable on both desktop and mobile devices</li>
+                            <li>Score Tracking: Keeps track of current and best scores</li>
+                            <li>Smooth Animations: Enhances user experience with fluid tile movements</li>
+                            <li>Game State Persistence: Saves game progress in local storage</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 6: Intelligent Test Automation Framework -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-10 hover:shadow-xl transition duration-300 project-card" data-tags="python,testing">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Intelligent Test Automation Framework</h3>
+                            <p class="text-lg text-blue-600">Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-gray-600 mb-4">A comprehensive test automation framework capable of handling web, API, mobile, client-side, and server-side testing. This framework aims to provide a unified solution for all testing needs across different platforms and technologies.</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Pytest</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Allure</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Selenium</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Appium</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">REST APIs</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Planned Features</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                            <li>Cross-Platform Testing: Single framework for web, mobile, API, and more</li>
+                            <li>AI-Powered Test Generation: Automatically create test cases based on application behavior</li>
+                            <li>Self-Healing Tests: Automatically adapt to UI changes to reduce maintenance</li>
+                            <li>Comprehensive Reporting: Detailed test results with Allure integration</li>
+                            <li>Parallel Execution: Run tests simultaneously across multiple environments</li>
+                            <li>CI/CD Integration: Seamless integration with popular CI/CD tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Education</h2>
+                
+                <div class="max-w-3xl mx-auto space-y-8">
+                    <!-- B.Tech -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">B.Tech, Electronics and Communication Engineering</h3>
+                                <p class="text-blue-600">ITER, SOA University, Bhubaneswar, Odisha</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <p class="text-gray-600">CGPA: 9.3</p>
+                            <p class="text-gray-600">Jan 2016</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Class XII -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-school text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Senior Secondary (Class XII)</h3>
+                                <p class="text-blue-600">Mother's Public School, Bhubaneswar</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <p class="text-gray-600">GPA: 85%</p>
+                            <p class="text-gray-600">Jan 2012</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Class X -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-school text-blue-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Secondary (Class X)</h3>
+                                <p class="text-blue-600">Maharishi Vidya Mandir, Nayagarh</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <p class="text-gray-600">GPA: 9.4</p>
+                            <p class="text-gray-600">Jan 2010</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Awards Section -->
+        <section id="awards" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Awards & Recognitions</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- PubMatic Awards -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 border-t-4 border-blue-600">
+                        <h3 class="text-xl font-bold mb-4 text-center">PubMatic</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>3x Team Player Award</li>
+                            <li>2x Biased Towards Action Award</li>
+                            <li>Innovation Award</li>
+                            <li>2023 & 2024 Hackathon Special Accolade Winner</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Pegasystems Awards -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 border-t-4 border-purple-600">
+                        <h3 class="text-xl font-bold mb-4 text-center">Pegasystems</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Pega Excellence Award</li>
+                            <li>Wow Award</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- TCS Awards -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 border-t-4 border-green-600">
+                        <h3 class="text-xl font-bold mb-4 text-center">TCS</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Excellent Performance and Commitment Award – TCS-JPMC</li>
+                            <li>Best Team Award</li>
+                            <li>Zeta 2016 Winner</li>
+                            <li>ILP Ideathon 2016 Winner</li>
+                            <li>ILP Kudos Award</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Languages -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-center mb-8">Languages</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="bg-white rounded-full shadow-lg px-6 py-3 flex items-center">
+                            <span class="font-medium mr-2">English:</span>
+                            <span class="text-gray-600">Fluent (C2)</span>
+                        </div>
+                        <div class="bg-white rounded-full shadow-lg px-6 py-3 flex items-center">
+                            <span class="font-medium mr-2">Hindi:</span>
+                            <span class="text-gray-600">Proficient (C2)</span>
+                        </div>
+                        <div class="bg-white rounded-full shadow-lg px-6 py-3 flex items-center">
+                            <span class="font-medium mr-2">Odia:</span>
+                            <span class="text-gray-600">Proficient (C2)</span>
+                        </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Thought Leadership Section -->
+        <section id="thought-leadership" class="py-20 bg-gradient-to-r from-blue-800 to-indigo-800 text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">Thought Leadership</h2>
+                    <p class="text-xl text-gray-300">Insights, articles, and presentations on AI and automation</p>
+                </div>
+                
+                <div id="thought-leadership-container" class="relative">
+                    <!-- Thought leadership content will be dynamically loaded here by thought-leadership.js -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12">Get in Touch</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Contact Info -->
+                        <div class="bg-white rounded-lg shadow-lg p-8">
+                            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-phone text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Phone</h4>
+                                        <p class="font-medium">+91 9040293063</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-envelope text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Email</h4>
+                                        <p class="font-medium">sahooasit@hotmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                        <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm text-gray-500">Location</h4>
+                                        <p class="font-medium">Pune, India</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <h3 class="text-xl font-semibold mb-4">Connect with me</h3>
+                                <div class="flex space-x-4">
+                                    <a href="https://www.linkedin.com/in/sahooasit" target="_blank" class="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 transition duration-300">
+                                        <i class="fab fa-linkedin-in text-xl"></i>
+                                    </a>
+                                    <a href="https://github.com/pm-asit-sahoo" target="_blank" class="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 transition duration-300">
+                                        <i class="fab fa-github text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div>
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label for="from_name" class="block text-sm font-medium text-gray-700">Name</label>
+                                    <input type="text" id="from_name" name="from_name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="from_email" class="block text-sm font-medium text-gray-700">Email</label>
+                                    <input type="email" id="from_email" name="from_email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                                    <input type="text" id="subject" name="subject" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="message" name="message" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" rows="4"></textarea>
+                                </div>
+                                <input type="hidden" name="to_email" value="sahooasit@hotmail.com">
+                                <button type="submit" id="submitBtn" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <i class="fas fa-paper-plane mr-2"></i>Send Message
+                                </button>
+                                <!-- Success Message (Hidden by default) -->
+                                <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-md">
+                                    <p class="font-medium">Message sent successfully!</p>
+                                    <p>Asit will revert soon. Thanks for contacting.</p>
+                                </div>
+                                <!-- Error Message (Hidden by default) -->
+                                <div id="errorMessage" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+                                    <p class="font-medium">There was an error sending your message.</p>
+                                    <p>Please try again later or contact directly via email.</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-8">
+                <a href="https://github.com/pm-asit-sahoo" target="_blank" class="hover:text-blue-400"><i class="fab fa-github mr-2"></i>GitHub</a>
+                <a href="https://www.linkedin.com/in/sahooasit" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a>
+                <a href="mailto:sahooasit@hotmail.com" class="hover:text-blue-400"><i class="fas fa-envelope mr-2"></i>Email</a>
+            </div>
+            <p class="text-center mt-8 text-gray-400">&copy; 2025 Asit Sahoo. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            
+            // Get form data
+            const from_name = document.getElementById('from_name').value;
+            const from_email = document.getElementById('from_email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Format the message in a more readable way
+            const formattedMessage = `Name: ${from_name}
+Email: ${from_email}
+
+Message:
+${message}`;
+            
+            // EmailJS configuration
+            const serviceID = 'contactme'; // Your EmailJS service ID
+            const templateID = 'template_7u3djsn'; // Your EmailJS template ID
+            const userID = 'v_1cYT2pXLeNtRdUa'; // Your EmailJS public key
+            
+            // Prepare data for EmailJS API
+            const data = {
+                service_id: serviceID,
+                template_id: templateID,
+                user_id: userID,
+                template_params: {
+                    'from_name': from_name,
+                    'from_email': from_email,
+                    'subject': subject,
+                    'message': formattedMessage, // Using the formatted message
+                    'email_subject': subject,
+                    'subject_line': subject,
+                    'mail_subject': subject
+                }
+            };
+            
+            // Log the data being sent for debugging
+            console.log('Sending email with data:', data);
+            
+            // Send the email using the EmailJS API directly
+            fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    console.log('SUCCESS!', response.status);
+                    showSuccessMessage();
+                } else {
+                    console.log('FAILED...', response.status);
+                    showErrorMessage();
+                }
+                return response.text();
+            })
+            .then(function(text) {
+                console.log(text);
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                showErrorMessage();
+            });
+            
+            function showSuccessMessage() {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+                successMessage.classList.remove('hidden');
+                errorMessage.classList.add('hidden');
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            }
+            
+            function showErrorMessage() {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+                errorMessage.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                
+                // Hide error message after 5 seconds
+                setTimeout(function() {
+                    errorMessage.classList.add('hidden');
+                }, 5000);
+            }
+        });
+    </script>
+    
+    <!-- No EmailJS CDN needed when using the direct API approach -->
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    
+    <!-- Custom JavaScript files for interactive features -->
+    <script src="js/skills-visualization.js"></script>
+    <script src="js/project-showcase.js"></script>
+    <script src="js/portfolio-assistant.js"></script>
+    <script src="js/experience-timeline.js"></script>
+    <script src="js/skill-recommendation.js"></script>
+    <script src="js/resume-customizer.js"></script>
+    <script src="js/resume-builder.js"></script>
+    <script src="js/skills-search.js"></script>
+    <script src="js/ai-showcase.js"></script>
+    <script src="js/ai-impact-visualization.js"></script>
+    <script src="js/thought-leadership.js"></script>
+    <script src="js/genai-skills-integration.js"></script>
+    </body>
+</html>
+    
+    <!-- Libraries for DOCX to PDF conversion -->
+    <script src="https://unpkg.com/docx-preview@0.1.15/dist/docx-preview.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    
+    <!-- DOCX to PDF conversion scripts -->
+    <script src="js/docx-pdf-converter.js"></script>
+    <script src="js/docx2pdf.js"></script>
+    </body>
+</html>
