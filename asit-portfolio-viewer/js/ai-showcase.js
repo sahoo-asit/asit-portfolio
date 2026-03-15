@@ -25,13 +25,13 @@ function createAIShowcase(container) {
     
     // Title
     const title = document.createElement('h2');
-    title.className = 'text-2xl font-bold text-gray-800 mb-4';
-    title.textContent = 'AI Implementation Showcase';
+    title.className = 'text-3xl font-bold text-gray-800 mb-4';
+    title.innerHTML = '<i class="fas fa-rocket text-blue-600 mr-3"></i>AI Implementation Showcase';
     
     // Description
     const description = document.createElement('p');
-    description.className = 'text-gray-600 mb-6';
-    description.textContent = 'Explore interactive demonstrations of my AI implementations. Select a project to see architecture diagrams, performance metrics, and implementation details.';
+    description.className = 'text-gray-600 mb-6 text-lg';
+    description.innerHTML = 'Explore <strong>interactive demonstrations</strong> of production-grade AI implementations. Each project showcases <span class="text-blue-600 font-semibold">architecture patterns</span>, <span class="text-green-600 font-semibold">performance metrics</span>, and <span class="text-purple-600 font-semibold">real-world impact</span>.';
     
     // Projects selector
     const projectSelector = document.createElement('div');
@@ -46,29 +46,34 @@ function createAIShowcase(container) {
     const projects = [
         {
             id: 'rag-chatbot',
-            name: 'RAG-Powered Chatbot',
+            name: '🤖 RAG-Powered Chatbot',
             content: createRAGChatbotContent()
         },
         {
             id: 'test-generator',
-            name: 'AI Test Generator',
+            name: '🧪 AI Test Generator',
             content: createTestGeneratorContent()
         },
         {
+            id: 'deepeval',
+            name: '📊 DeepEval Framework',
+            content: createDeepEvalContent()
+        },
+        {
             id: 'observability',
-            name: 'AI Observability',
+            name: '👁️ AI Observability',
             content: createObservabilityContent()
         },
         {
             id: 'semantic-search',
-            name: 'Semantic Search',
+            name: '🔍 Semantic Search',
             content: createSemanticSearchContent()
         }
     ];
     
     projects.forEach(project => {
         const button = document.createElement('button');
-        button.className = 'px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition';
+        button.className = 'px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium';
         button.textContent = project.name;
         button.addEventListener('click', () => {
             // Clear current content
@@ -360,6 +365,100 @@ function createObservabilityContent() {
                 <li><span class="font-medium">Dashboards:</span> Real-time visualization of AI system performance</li>
                 <li><span class="font-medium">Alerting:</span> Automated notifications for performance degradation</li>
                 <li><span class="font-medium">Optimization Loop:</span> Continuous improvement based on observability data</li>
+            </ul>
+        </div>
+    `;
+    
+    content.appendChild(diagram);
+    content.appendChild(metrics);
+    content.appendChild(details);
+    
+    return content;
+}
+
+// Create content for DeepEval Framework showcase
+function createDeepEvalContent() {
+    const content = document.createElement('div');
+    content.className = 'ai-project-card';
+    content.setAttribute('data-project-id', 'deepeval');
+    
+    // Architecture diagram
+    const diagram = document.createElement('div');
+    diagram.className = 'mb-6';
+    diagram.innerHTML = `
+        <h3 class="text-xl font-semibold mb-3">DeepEval Framework Architecture</h3>
+        <div class="bg-white p-4 rounded border">
+            <div class="flex flex-col items-center">
+                <div class="grid grid-cols-3 gap-4 w-full max-w-2xl mb-4">
+                    <div class="bg-blue-100 p-3 rounded-lg text-center">
+                        <span class="font-medium">LLM Application</span>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-lg text-center">
+                        <span class="font-medium">Agentic System</span>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-lg text-center">
+                        <span class="font-medium">RAG Pipeline</span>
+                    </div>
+                </div>
+                <div class="h-6 border-l-2 border-gray-400"></div>
+                <div class="bg-green-100 p-3 rounded-lg w-full max-w-md text-center mb-4">
+                    <span class="font-medium">DeepEval Test Suite</span>
+                </div>
+                <div class="h-6 border-l-2 border-gray-400"></div>
+                <div class="grid grid-cols-2 gap-4 w-full max-w-2xl mb-4">
+                    <div class="bg-yellow-100 p-3 rounded-lg text-center">
+                        <span class="font-medium">Evaluation Metrics</span>
+                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-lg text-center">
+                        <span class="font-medium">Custom Assertions</span>
+                    </div>
+                </div>
+                <div class="h-6 border-l-2 border-gray-400"></div>
+                <div class="bg-purple-100 p-3 rounded-lg w-full max-w-md text-center mb-4">
+                    <span class="font-medium">Quality Scoring & Reports</span>
+                </div>
+                <div class="h-6 border-l-2 border-gray-400"></div>
+                <div class="bg-red-100 p-3 rounded-lg w-full max-w-md text-center">
+                    <span class="font-medium">CI/CD Integration</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Performance metrics
+    const metrics = document.createElement('div');
+    metrics.className = 'mb-6 project-metrics';
+    metrics.id = 'metrics-deepeval';
+    metrics.innerHTML = `
+        <h3 class="text-xl font-semibold mb-3">Performance Metrics</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded border text-center">
+                <div class="text-3xl font-bold text-blue-600">95%</div>
+                <div class="text-gray-600">Test Coverage for AI Systems</div>
+            </div>
+            <div class="bg-white p-4 rounded border text-center">
+                <div class="text-3xl font-bold text-blue-600">50%</div>
+                <div class="text-gray-600">Reduction in AI Bugs</div>
+            </div>
+            <div class="bg-white p-4 rounded border text-center">
+                <div class="text-3xl font-bold text-blue-600">80%</div>
+                <div class="text-gray-600">Faster Quality Validation</div>
+            </div>
+        </div>
+    `;
+    
+    // Implementation details
+    const details = document.createElement('div');
+    details.innerHTML = `
+        <h3 class="text-xl font-semibold mb-3">Implementation Details</h3>
+        <div class="bg-white p-4 rounded border">
+            <ul class="list-disc pl-5 space-y-2">
+                <li><span class="font-medium">Evaluation Metrics:</span> Answer relevancy, faithfulness, contextual precision, hallucination detection</li>
+                <li><span class="font-medium">Agentic Testing:</span> Validates autonomous decision-making, tool integration, and multi-agent orchestration</li>
+                <li><span class="font-medium">Custom Assertions:</span> Domain-specific quality checks for LLM outputs</li>
+                <li><span class="font-medium">Integration:</span> Seamless integration with PyTest and CI/CD pipelines</li>
+                <li><span class="font-medium">Reporting:</span> Detailed quality reports with metric breakdowns and failure analysis</li>
+                <li><span class="font-medium">Use Cases:</span> RAG validation, chatbot quality assurance, agentic framework testing</li>
             </ul>
         </div>
     `;

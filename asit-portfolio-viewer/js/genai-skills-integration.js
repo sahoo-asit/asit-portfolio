@@ -247,15 +247,20 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="mt-12">
             <h3 class="text-xl font-semibold mb-6 text-center">Additional GenAI Expertise</h3>
             <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RAG</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">MCP Server</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Agentic Development</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">DeepEval</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">LangChain</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">LangGraph</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Langfuse</span>
                 <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">GPT-4</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Claude 4.5 Sonnet</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Claude 4.5 Opus</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Claude 4.5 Thinking</span>
                 <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Claude 3</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Llama 3</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Mistral</span>
                 <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Gemini</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">BERT</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">T5</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Anthropic Models</span>
-                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Falcon</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Llama 3</span>
                 <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Embeddings</span>
                 <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Fine-tuning</span>
             </div>

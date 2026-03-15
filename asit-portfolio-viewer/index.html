@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asit Sahoo - Lead SDET Portfolio</title>
+    <title>Asit Sahoo - Senior Principal Software Engineer 1 Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,14 +12,139 @@
     <!-- Chart.js for data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+        }
         body {
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
         .gradient-text {
             background: linear-gradient(45deg, #4f46e5, #818cf8);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        /* Modern glassmorphism effect */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+        /* Smooth hover animations */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        /* Animated gradient background */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Pulse animation for CTA buttons */
+        .pulse-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+        }
+        /* Modern card styling */
+        .modern-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        .modern-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+        /* Floating animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        /* Improved mobile nav */
+        @media (max-width: 768px) {
+            .mobile-nav-open {
+                max-height: 400px;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        /* Skill bar animation */
+        .skill-bar {
+            transition: width 1s ease-out;
+        }
+        /* Section divider */
+        .section-divider {
+            height: 4px;
+            width: 60px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+            margin: 0 auto 2rem;
+        }
+        /* Modern input styling */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        /* Hero section enhancements */
+        .hero-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         .timeline-container {
             position: relative;
@@ -122,13 +247,19 @@
 
     <main class="pt-20">
         <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
-            <div class="container mx-auto px-6 text-center">
-                <div class="flex flex-col items-center mb-8">
-                    <img src="image.jpeg" alt="Asit Sahoo" class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mb-6">
-                    <h1 class="text-6xl font-bold mb-6 text-gray-800">Asit Sahoo</h1>
-                    <p class="text-2xl text-gray-600 mb-4">Senior Lead SDET</p>
-                    <p class="text-xl text-gray-600">Automation & GenAI Expert</p>
+        <section id="hero" class="min-h-screen flex items-center justify-center hero-bg">
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="flex flex-col items-center mb-8 fade-in">
+                    <div class="relative float">
+                        <img src="image.jpeg" alt="Asit Sahoo" class="w-44 h-44 rounded-full object-cover border-4 border-white shadow-2xl mb-6 ring-4 ring-blue-100">
+                        <div class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-800 tracking-tight">Asit Sahoo</h1>
+                    <p class="text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 font-semibold mb-3">Senior Principal Software Engineer 1</p>
+                    <p class="text-lg md:text-xl text-gray-600 flex items-center gap-2">
+                        <i class="fas fa-robot text-blue-500"></i>
+                        Automation & GenAI Expert
+                    </p>
                 </div>
                 <div class="flex flex-wrap justify-center gap-4 mb-8">
                     <div class="flex items-center text-gray-700">
@@ -153,10 +284,10 @@
                     </a>
                 </div>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="Asit Resume_Lead_SDET.docx" id="downloadCV" download class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                    <a href="Asit_Sahoo_Resume.docx" id="downloadCV" download class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 pulse-btn font-medium">
                         <i class="fas fa-download mr-2"></i>Download CV
                     </a>
-                    <a href="#contact" class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition duration-300">
+                    <a href="#contact" class="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 font-medium transform hover:-translate-y-1">
                         <i class="fas fa-envelope mr-2"></i>Contact Me
                     </a>
                 </div>
@@ -189,7 +320,7 @@
                                     </div>
                                     <div>
                                         <h4 class="text-sm text-gray-500">Current Position</h4>
-                                        <p class="font-medium">Senior Lead SDET at PubMatic</p>
+                                        <p class="font-medium">Senior Principal Software Engineer 1 at PubMatic</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -926,19 +1057,19 @@
                 <div class="mt-12">
                     <h3 class="text-xl font-semibold mb-6 text-center">Additional Expertise</h3>
                     <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">POC Development</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Solution Architecture</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">QA Infrastructure Design</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Design Framework</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RFP Analysis</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Technical Documentation</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Selenium</span>
+                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Rest Assured</span>
                         <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">BDD</span>
                         <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Cucumber</span>
                         <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Specflow</span>
                         <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">NUnit</span>
                         <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">TestStack.White</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Selenium</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Rest Assured</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">POC Development</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RFP Analysis</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Design Framework</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">QA Infrastructure Design</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Solution Architecture</span>
-                        <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Technical Documentation</span>
                     </div>
                 </div>
             </div>
@@ -953,7 +1084,7 @@
                 <div class="bg-white rounded-lg shadow-lg p-8 mb-10">
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Senior Lead SDET</h3>
+                            <h3 class="text-2xl font-bold text-gray-800">Senior Principal Software Engineer 1</h3>
                             <p class="text-lg text-blue-600">PubMatic</p>
                         </div>
                         <div class="mt-2 md:mt-0">
@@ -962,10 +1093,13 @@
                         </div>
                     </div>
                     <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Involved in writing automation scripts for multiple products using Robot and PyTest frameworks.</li>
-                        <li>Designed, built, and maintained a comprehensive PyTest framework.</li>
+                        <li>Involved in writing automation scripts for multiple products using Robot, PyTest, and WebdriverIO frameworks.</li>
+                        <li>Designed, built, and maintained a comprehensive PyTest framework and WebdriverIO-based UI automation framework.</li>
+                        <li>Designed and developed DeepEval framework for evaluating LLM-based applications and agentic systems, ensuring quality and reliability of AI-powered solutions.</li>
+                        <li>Wrote comprehensive test cases for agentic frameworks to validate autonomous decision-making, tool integration, and multi-agent orchestration capabilities.</li>
                         <li>Enhanced productivity and efficiency for Dev & QA teams by implementing multiple Jenkins tools with a left shift approach.</li>
                         <li>Designed and implemented an advanced AI-powered chatbot to assist publishers, solution engineers & internal engineering team in automating routine tasks and enhancing productivity using GenAI technologies including RAG, LangChain, LangGraph, Langfuse, Transformers, Hugging Face models, MCP server, and agentic frameworks for autonomous & real-time decision-making.</li>
+                        <li>Designed and developed an AI-powered centralized release management portal where autonomous agents collaborate to manage the full release lifecycle—from planning and validation to deployment and post-deployment monitoring.</li>
                         <li>Developed a Test Case Generator using Gen AI and Streamlit that integrates with Jira, Confluence & user inputs and automatically generates test cases.</li>
                         <li>Streamlined code review process by integrating Bito code review agent in Git, resulting in automated pull request reviews.</li>
                         <li>Developed a comprehensive automation framework to facilitate cross-functional team integration testing without requiring manual intervention.</li>
@@ -973,7 +1107,7 @@
                         <li>Integrated local QA Jenkins pipeline to Dev Centralized Jenkins CI pipeline.</li>
                         <li>Maintained traceability matrix, shared test summary reports on a weekly basis.</li>
                         <li>Managed various BHAG projects within the SDET organization including GenAI, Code Coverage, and Grafana dashboard logging.</li>
-                        <li>Demonstrated hands-on experience in SQL, Unix, Docker, Selenium, and API testing.</li>
+                        <li>Demonstrated hands-on experience in SQL, Unix, Docker, Selenium, WebdriverIO, and API testing.</li>
                         <li>Streamlined and optimized the testing process, achieving a significant reduction in execution time for more than 2000 test cases – from an average of 6 hours down to only 1 hour.</li>
                         <li>Managed SDET team of 5 as team lead.</li>
                         <li>Contributed many features to Prebid.js open source repo which deals with programmatic advertisement.</li>
@@ -1383,7 +1517,7 @@
                             <li>3x Team Player Award</li>
                             <li>2x Biased Towards Action Award</li>
                             <li>Innovation Award</li>
-                            <li>2023 & 2024 Hackathon Special Accolade Winner</li>
+                            <li>2024 & 2025 Hackathon Special Accolade Winner</li>
                         </ul>
                     </div>
                     
@@ -1698,9 +1832,7 @@ ${message}`;
     <script src="js/ai-impact-visualization.js"></script>
     <script src="js/thought-leadership.js"></script>
     <script src="js/genai-skills-integration.js"></script>
-    </body>
-</html>
-    
+    <script src="js/profile-knowledge-base.js"></script>
     <!-- Libraries for DOCX to PDF conversion -->
     <script src="https://unpkg.com/docx-preview@0.1.15/dist/docx-preview.js"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
@@ -1709,5 +1841,5 @@ ${message}`;
     <!-- DOCX to PDF conversion scripts -->
     <script src="js/docx-pdf-converter.js"></script>
     <script src="js/docx2pdf.js"></script>
-    </body>
+</body>
 </html>

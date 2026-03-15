@@ -308,15 +308,18 @@ function initChatbot() {
 const knowledgeBase = {
         profile: {
             name: "Asit Sahoo",
-            title: "Senior Lead SDET",
+            title: "Senior Principal Software Engineer 1",
             experience: "9+ years",
             currentCompany: "PubMatic",
             location: "Pune, India",
             email: "sahooasit@hotmail.com",
             phone: "+91 9040293063",
-            education: "Bachelor of Technology in Computer Science & Engineering from Biju Patnaik University of Technology",
-            summary: "Experienced Lead SDET with 9+ years of expertise in application testing and designing Hybrid Automation Frameworks for Web, Windows, and APIs. Skilled in CI/CD, agile practices, and building robust GenAI tools.",
-            specialization: "GenAI, Automation Framework Design, Hybrid Automation Frameworks, Vibe Coder"
+            linkedin: "https://www.linkedin.com/in/sahooasit",
+            github: "https://github.com/pm-asit-sahoo",
+            education: "Bachelor of Technology in Electronics and Communication Engineering from ITER, SOA University, Bhubaneswar (CGPA: 9.3)",
+            summary: "Experienced Senior Principal Software Engineer with 9+ years of expertise in designing and implementing Hybrid Automation Frameworks for Web, Windows, and API applications. Proficient in leveraging Generative AI to enhance quality engineering processes, building robust AI-powered testing solutions, and enabling CI/CD-driven automation. Also works on backend engineering within the DSP layer of the programmatic advertising ecosystem, developing Java-based APIs and distributed services.",
+            specialization: "GenAI, Automation Framework Design, Backend API Development, RAG Architecture, LangChain, MCP Server, Vibe Coding",
+            languages: ["English (Fluent C2)", "Hindi (Proficient C2)", "Odia (Proficient C2)"]
         },
         skills: {
             programming: [
@@ -447,38 +450,111 @@ const knowledgeBase = {
         experience: [
             {
                 company: "PubMatic",
-                role: "Senior Lead SDET",
-                period: "2019 - Present",
+                role: "Senior Principal Software Engineer 1",
+                period: "March 2026 - Present",
                 responsibilities: [
-                    "Leading automation efforts for web and API testing",
-                    "Architecting and developing AI-powered tools using RAG, LangChain, and LLMs",
-                    "Implementing observability solutions with Langfuse and MCP server",
-                    "Contributing to Prebid.js open-source project",
-                    "Mentoring junior team members on AI and automation technologies",
-                    "Implementing CI/CD pipelines with integrated AI quality checks"
+                    "Designing and developing Java-based backend APIs supporting high-scale services in the DSP layer",
+                    "Working on MCP server architecture to expose internal application APIs as ADCP-compliant services",
+                    "Developing and optimizing services using PostgreSQL and RabbitMQ-based messaging pipelines",
+                    "Building UI automation using WebdriverIO and API automation using PyTest"
                 ],
                 achievements: [
-                    "Developed an AI-powered chatbot with RAG architecture that improved team efficiency by 30%",
-                    "Created a universal test case generator using AI and vector embeddings, reducing test creation time by 60%",
-                    "Implemented Langfuse observability for AI applications, improving prompt performance by 25%",
-                    "Built an MCP server monitoring solution for real-time AI application performance tracking",
-                    "Designed and implemented a semantic search system across technical documentation",
-                    "Contributed multiple features to Prebid.js, enhancing header bidding functionality"
+                    "Architected backend APIs for high-scale DSP services in programmatic advertising",
+                    "Implemented MCP server integrations for secure API enablement",
+                    "Built scalable event-driven architectures using RabbitMQ"
+                ]
+            },
+            {
+                company: "PubMatic",
+                role: "Senior Lead Software Development Engineer in Test 1",
+                period: "March 2025 - March 2026",
+                responsibilities: [
+                    "Led and mentored a team of 3 SDETs with effective sprint planning",
+                    "Architected enterprise-grade AI-powered Slack chatbot platform",
+                    "Designed Autonomous AI Release Management System",
+                    "Led BHAG initiatives for GenAI automation and Grafana observability",
+                    "Contributed to Prebid.js open-source repository"
+                ],
+                achievements: [
+                    "AI chatbot platform offloads ~25-30% of daily operational workload",
+                    "Built autonomous agents for complete release lifecycle orchestration",
+                    "Contributed multiple features to Prebid.js representing PubMatic"
+                ]
+            },
+            {
+                company: "PubMatic",
+                role: "Principal Software Development Engineer in Test",
+                period: "November 2021 - March 2025",
+                responsibilities: [
+                    "Developed automation scripts using Robot and PyTest frameworks",
+                    "Built comprehensive PyTest framework for scalable test automation",
+                    "Integrated QA Jenkins pipelines with centralized CI pipelines",
+                    "Reduced test execution time from 6 hours to 1 hour for 2000+ test cases"
+                ],
+                achievements: [
+                    "Reduced test execution time by 83% through optimization and parallelization",
+                    "Built reusable automation framework for cross-team integration testing",
+                    "Integrated Bito code review agent for automated PR validations"
                 ]
             },
             {
                 company: "Pegasystems",
-                role: "Senior SDET",
-                period: "2016 - 2019",
+                role: "Senior Software Development Engineer Test",
+                period: "April 2021 - October 2021",
                 responsibilities: [
-                    "UI and API automation for enterprise applications",
-                    "Performance testing and optimization",
-                    "Test framework architecture and development"
+                    "Test automation framework development using Selenium, C#, Java, BDD",
+                    "API Testing and Automation using Postman and RestSharp",
+                    "Setting up Azure DevOps process",
+                    "Managing Scrum Team as Scrum Master"
                 ],
                 achievements: [
-                    "Developed a hybrid automation framework that increased test coverage by 45%",
-                    "Implemented API testing strategies that identified critical bugs before production",
-                    "Created performance testing solutions that improved application response time by 30%"
+                    "Developed WinForms & WPF TestApp for data generation",
+                    "Enhanced test automation frameworks with ExtentReports"
+                ]
+            },
+            {
+                company: "Pegasystems",
+                role: "Software Development Engineer In Test",
+                period: "January 2019 - April 2021",
+                responsibilities: [
+                    "Analysis and design of requirements",
+                    "Writing automation scripts for requirements",
+                    "Test automation framework enhancements",
+                    "API Testing using Postman"
+                ],
+                achievements: [
+                    "Enhanced hybrid automation framework",
+                    "Improved test coverage through automation"
+                ]
+            },
+            {
+                company: "Tata Consultancy Services",
+                role: "Systems Engineer",
+                period: "July 2017 - January 2019",
+                responsibilities: [
+                    "Enhanced Selenium-Java hybrid automation frameworks",
+                    "Identified and developed reusable framework components",
+                    "Defined test plans and created test procedures",
+                    "Handled end-to-end regression cycles"
+                ],
+                achievements: [
+                    "Improved framework maintainability and reusability",
+                    "Collaborated with onsite teams for release alignment"
+                ]
+            },
+            {
+                company: "Tata Consultancy Services",
+                role: "Assistant System Engineer",
+                period: "July 2016 - June 2017",
+                responsibilities: [
+                    "Manual test case writing and optimization",
+                    "UI automation using Selenium with POM pattern",
+                    "API automation using Rest Assured",
+                    "Regression testing and bug reporting"
+                ],
+                achievements: [
+                    "Automated UI and API test cases",
+                    "Maintained clear test documentation"
                 ]
             }
         ],
@@ -490,7 +566,16 @@ const knowledgeBase = {
             "Designed and implemented vector embedding systems for intelligent test case generation across multiple teams",
             "Recognized thought leader with presentations on AI-powered testing at industry conferences",
             "Mentor who has guided 10+ junior engineers in AI and automation technologies",
-            "Unique combination of deep testing expertise and cutting-edge AI implementation skills"
+            "Unique combination of deep testing expertise and cutting-edge AI implementation skills",
+            "Backend engineering expertise in DSP layer with Java-based APIs and distributed services",
+            "Experience with MCP server integrations, PostgreSQL, and RabbitMQ event-driven architectures",
+            "2024 & 2025 Hackathon Special Accolade Winner at PubMatic",
+            "Multiple awards including 3x Team Player Award, 2x Biased Towards Action Award, and Innovation Award at PubMatic"
+        ],
+        awards: [
+            { company: "PubMatic", awards: ["3x Team Player Award", "2x Biased Towards Action Award", "Innovation Award", "2024 & 2025 Hackathon Special Accolade Winner"] },
+            { company: "Pegasystems", awards: ["Pega Excellence Award", "Wow Award"] },
+            { company: "TCS", awards: ["Excellent Performance and Commitment Award (TCS-JPMC)", "Best Team Award", "Zeta 2016 Winner", "ILP Ideathon 2016 Winner", "ILP Kudos Award"] }
         ]
     };
 
@@ -688,6 +773,43 @@ function getBotResponse(message) {
                 patterns: ["thought leadership", "blog posts", "articles", "publications", "conference talks", "tutorials", "guides", "real-time content", "dynamic content", "api integration"],
                 responseGenerator: () => {
                     return `The Thought Leadership section of Asit's portfolio has been revamped to use real-time data from third-party APIs instead of static content. It now fetches content from sources like Medium, Dev.to, and GitHub repositories, displaying blog posts, conference talks, articles, and tutorials dynamically. The section features loading states, error handling with retry functionality, and randomized content display to simulate a live data feed. This implementation ensures that the content stays up-to-date automatically as new articles or talks are published.`;
+                },
+                threshold: 0.6
+            },
+            {
+                topic: "awards",
+                patterns: ["awards", "recognition", "achievements", "hackathon", "winner", "accolade", "excellence", "team player"],
+                responseGenerator: () => {
+                    const awards = knowledgeBase.awards;
+                    let response = "Asit has received numerous awards and recognitions: ";
+                    awards.forEach(a => {
+                        response += `At ${a.company}: ${a.awards.join(", ")}. `;
+                    });
+                    return response;
+                },
+                threshold: 0.6
+            },
+            {
+                topic: "backend",
+                patterns: ["backend", "java", "api development", "dsp", "demand side platform", "microservices", "postgresql", "rabbitmq", "event-driven", "distributed services"],
+                responseGenerator: () => {
+                    return `Asit currently works on backend engineering within the DSP (Demand Side Platform) layer of the programmatic advertising ecosystem. He designs and develops Java-based backend APIs supporting high-scale services, works on MCP server architecture for secure API enablement, and builds scalable event-driven architectures using PostgreSQL and RabbitMQ. His work involves developing distributed services that power large-scale ad technology platforms.`;
+                },
+                threshold: 0.6
+            },
+            {
+                topic: "mcp",
+                patterns: ["mcp", "mcp server", "model context protocol", "adcp", "api enablement"],
+                responseGenerator: () => {
+                    return `Asit has expertise in MCP (Model Context Protocol) server architecture. He works on exposing internal application APIs as ADCP-compliant services, enabling secure and standardized access for internal systems and users while improving interoperability across platform components. This is part of his backend engineering work at PubMatic.`;
+                },
+                threshold: 0.6
+            },
+            {
+                topic: "hackathon",
+                patterns: ["hackathon", "competition", "ideathon", "zeta"],
+                responseGenerator: () => {
+                    return `Asit has won multiple hackathons and competitions: 2024 & 2025 Hackathon Special Accolade Winner at PubMatic, Zeta 2016 Winner at TCS, and ILP Ideathon 2016 Winner at TCS. These wins demonstrate his innovative thinking and ability to deliver impactful solutions under pressure.`;
                 },
                 threshold: 0.6
             }
