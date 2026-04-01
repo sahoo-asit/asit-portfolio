@@ -32,6 +32,24 @@
                 background: var(--bg-primary) !important;
                 color: var(--text-primary) !important;
                 overflow-x: hidden;
+                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M5 4 L5 22 L9.5 17.8 L13.2 24 L16.1 22.5 L12.4 16.4 L18.5 16.1 Z' fill='white' stroke='%2300d4ff' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto;
+            }
+
+            /* Cursor visibility */
+            html, body, section, nav, div, canvas {
+                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M5 4 L5 22 L9.5 17.8 L13.2 24 L16.1 22.5 L12.4 16.4 L18.5 16.1 Z' fill='white' stroke='%2300d4ff' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto;
+            }
+            a, button, [role="button"], .btn, .tech-legend-item, #avatar-mute-btn,
+            input[type="submit"], input[type="button"], label[for], select {
+                cursor: pointer !important;
+            }
+            input, textarea, [contenteditable="true"] {
+                caret-color: var(--accent-cyan) !important;
+                cursor: text !important;
+            }
+            ::selection {
+                background: rgba(0, 212, 255, 0.35);
+                color: #ffffff;
             }
 
             /* Animated gradient background */
