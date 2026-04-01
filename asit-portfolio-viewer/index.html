@@ -233,6 +233,144 @@
                 left: 0;
             }
         }
+
+        /* Layout smoothing for tablets and small desktops */
+        @media (max-width: 1024px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            #skills .grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+            #about .grid {
+                gap: 2.5rem;
+            }
+        }
+
+        /* Mobile-specific refinements */
+        @media (max-width: 640px) {
+            .hero-bg {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero p,
+            #hero .flex span {
+                font-size: 0.95rem;
+            }
+            #skills .grid,
+            #projects .grid,
+            #experience .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Resume chatbot */
+        #resume-chatbot {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            max-width: 360px;
+            width: min(92vw, 360px);
+            background: rgba(17, 24, 39, 0.95);
+            color: white;
+            border-radius: 24px;
+            padding: 1rem;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.6);
+            z-index: 9999;
+            backdrop-filter: blur(18px);
+        }
+        #resume-chatbot header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        #resume-chatbot header h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        #resume-chatbot header button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.4);
+            color: inherit;
+            border-radius: 12px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+        }
+        #resume-chatbot .chat-messages {
+            max-height: 240px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+        #resume-chatbot .message {
+            padding: 0.6rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        #resume-chatbot .message.user {
+            background: rgba(59, 130, 246, 0.2);
+            align-self: flex-end;
+        }
+        #resume-chatbot .message.bot {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        #resume-chatbot .chat-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        #resume-chatbot .chat-controls input {
+            flex: 1;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.5rem 0.75rem;
+            background: rgba(15, 23, 42, 0.5);
+            color: white;
+            font-family: inherit;
+        }
+        #resume-chatbot .chat-controls button {
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4f46e5, #a855f7);
+            color: white;
+            padding: 0.55rem 0.9rem;
+            font-weight: 600;
+        }
+        #resume-chatbot .chat-suggestions {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        #resume-chatbot .chat-suggestions button {
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+            border-radius: 999px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            color: white;
+        }
+        #resume-chatbot.is-collapsed {
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            border-radius: 30px;
+        }
+        #resume-chatbot.is-collapsed .chat-body,
+        #resume-chatbot.is-collapsed .chat-suggestions,
+        #resume-chatbot.is-collapsed header h4,
+        #resume-chatbot.is-collapsed .chat-controls {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -1719,6 +1857,27 @@
         </div>
     </footer>
     
+    <div id="resume-chatbot" class="is-collapsed">
+        <button id="resume-chatbot-toggle" class="chat-toggle-btn" aria-label="Open resume chatbot">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-body">
+            <header>
+                <div>
+                    <h4>Resume Chat</h4>
+                    <p class="text-xs text-gray-200">Ask anything about my experience, skills, awards or projects.</p>
+                </div>
+                <button id="resume-chatbot-collapse" type="button">Close</button>
+            </header>
+            <div class="chat-messages" id="resume-chatbot-messages"></div>
+            <div class="chat-controls">
+                <input id="resume-chatbot-input" type="text" placeholder="Ask a question..." aria-label="Chat question">
+                <button id="resume-chatbot-send" type="button" aria-label="Send question">Send</button>
+            </div>
+            <div class="chat-suggestions" id="resume-chatbot-suggestions"></div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
@@ -1851,6 +2010,99 @@ ${message}`;
                 }, 5000);
             }
         });
+
+        // Resume chatbot logic
+        const resumeKnowledge = {
+            experience: 'I am a Senior Principal Software Engineer 1 at PubMatic since Nov 2021 working on backend APIs, GenAI chatbots, and automation. Previously, I spent time at Pegasystems (2019-2021) and TCS (2016-2019) leading automation efforts and QA initiatives.',
+            skills: 'My expertise includes Python (95%), Java (85%), C# (90%), GenAI frameworks like LangChain/LangGraph, automation with PyTest/Robot Framework/Selenium, DevOps with Jenkins/Docker, and distributed systems. I also build AI chatbots, intelligent release systems, and CI/CD pipelines.',
+            genai: 'GenAI is a focus area. I built an enterprise AI chatbot using RAG and LangChain handling 25-30% of daily workload, an Autonomous Release Management System, and the DeepEval evaluation framework, plus LLM observability with Langfuse.',
+            projects: 'Highlighted projects include this interactive portfolio, an AI-powered Slack chatbot, the Universal Test Case Generator, Prebid.js contributions, an Intelligent Climate Dashboard and an Intelligent Test Automation Framework under development.',
+            awards: 'PubMatic: Team Player Award (3x), Biased Towards Action (2x), Innovation Award, Hackathon accolades (2024, 2025); Pegasystems: Excellence and Wow awards; TCS: Zeta 2016, ILP Ideathon, ILP Kudos Award.',
+            education: 'B.Tech in Electronics & Communication Engineering from ITER, SOA University, Bhubaneswar (2016) with a 9.3 CGPA.',
+            contact: 'Reach me at sahooasit@hotmail.com or +91 9040293063. I am based in Pune, India. You can also connect via LinkedIn (linkedin.com/in/sahooasit) or GitHub (github.com/pm-asit-sahoo).',
+            leadership: 'I enjoy mentoring engineering teams (3-5 members), leading automation and GenAI initiatives, and driving scalable architecture and observability practices.',
+            fallback: 'I can answer things about my experience, skills, GenAI work, awards, education, and contact details. Could you rephrase your question?'
+        };
+
+        const suggestions = [
+            'Tell me about your GenAI work',
+            'Which awards have you received?',
+            'What technologies do you use?',
+            'How can I contact you?'
+        ];
+
+        const chatbot = document.getElementById('resume-chatbot');
+        const inputField = document.getElementById('resume-chatbot-input');
+        const sendBtn = document.getElementById('resume-chatbot-send');
+        const messagesContainer = document.getElementById('resume-chatbot-messages');
+        const suggestionsContainer = document.getElementById('resume-chatbot-suggestions');
+        const toggleBtn = document.getElementById('resume-chatbot-toggle');
+        const collapseBtn = document.getElementById('resume-chatbot-collapse');
+
+        function addSuggestionButtons() {
+            suggestionsContainer.innerHTML = '';
+            suggestions.forEach(text => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = text;
+                btn.addEventListener('click', () => {
+                    inputField.value = text;
+                    handleChat();
+                });
+                suggestionsContainer.appendChild(btn);
+            });
+        }
+
+        function addMessage(role, text) {
+            const bubble = document.createElement('div');
+            bubble.className = `message ${role}`;
+            bubble.textContent = text;
+            messagesContainer.appendChild(bubble);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleChat() {
+            const question = inputField.value.trim();
+            if (!question) return;
+            addMessage('user', question);
+            inputField.value = '';
+
+            const normalized = question.toLowerCase();
+            let answer = resumeKnowledge.fallback;
+
+            if (/experience|career|work|journey/.test(normalized)) answer = resumeKnowledge.experience;
+            else if (/skill|technology|tool|tech/.test(normalized)) answer = resumeKnowledge.skills;
+            else if (/genai|ai|llm|rag|langchain|langgraph/.test(normalized)) answer = resumeKnowledge.genai;
+            else if (/project|build|contribute|work/.test(normalized)) answer = resumeKnowledge.projects;
+            else if (/award|recognition|hackathon/.test(normalized)) answer = resumeKnowledge.awards;
+            else if (/education|degree|college/.test(normalized)) answer = resumeKnowledge.education;
+            else if (/contact|email|phone|connect/.test(normalized)) answer = resumeKnowledge.contact;
+            else if (/leadership|mentor|team/.test(normalized)) answer = resumeKnowledge.leadership;
+
+            setTimeout(() => addMessage('bot', answer), 220);
+        }
+
+        function expandChatbot() {
+            chatbot.classList.remove('is-collapsed');
+        }
+
+        function collapseChatbot() {
+            chatbot.classList.add('is-collapsed');
+        }
+
+        toggleBtn.addEventListener('click', expandChatbot);
+        collapseBtn.addEventListener('click', collapseChatbot);
+        sendBtn.addEventListener('click', handleChat);
+        inputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                handleChat();
+            }
+        });
+
+        addSuggestionButtons();
+        addMessage('bot', 'Hi! I can answer questions about Asit’s resume. Try asking about experience, skills, GenAI work, or awards.');
+        collapseChatbot();
     </script>
     
     <!-- No EmailJS CDN needed when using the direct API approach -->
@@ -1882,13 +2134,11 @@ ${message}`;
     <script src="js/docx2pdf.js"></script>
     
     <!-- 3D Interactive & Voice Assistant -->
-    <script src="js/3d-engine.js"></script>
     <script src="js/scroll-animations.js"></script>
     
     <!-- Futuristic Theme & 3D Features -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="js/futuristic-theme.js"></script>
     <script src="js/tech-spheres-3d.js"></script>
-    <script src="js/avatar-3d-guide.js"></script>
 </body>
 </html>
