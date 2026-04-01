@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Chart.js for data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Three.js for 3D rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP + ScrollTrigger for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -128,7 +133,7 @@
         }
         /* Hero section enhancements */
         .hero-bg {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, rgba(245,247,250,0.85) 0%, rgba(195,207,226,0.75) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -145,6 +150,29 @@
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        /* 3D Page Styles */
+        #three-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        nav, main, footer { position: relative; z-index: 1; }
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        /* Reveal animations */
+        .reveal-section { opacity: 1; transition: opacity 0.6s ease; }
+        /* 3D card perspective */
+        .bg-white.rounded-lg, .modern-card, .border-t-4 {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        /* Smooth page transitions */
+        section { will-change: transform, opacity; }
+        /* Hide default cursor on desktop for custom cursor */
+        @media (min-width: 769px) {
+            body { cursor: none; }
+            a, button { cursor: none; }
         }
         .timeline-container {
             position: relative;
@@ -208,7 +236,7 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <nav class="fixed w-full bg-white shadow-lg z-50">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-lg z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <h1 class="text-2xl font-bold text-gray-800">Asit Sahoo</h1>
@@ -284,7 +312,7 @@
                     </a>
                 </div>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="Asit_Sahoo_Resume.docx" id="downloadCV" download class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 pulse-btn font-medium">
+                    <a href="Asit_Sahoo_Resume_Principal_SDE.docx" id="downloadCV" download class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 pulse-btn font-medium">
                         <i class="fas fa-download mr-2"></i>Download CV
                     </a>
                     <a href="#contact" class="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 font-medium transform hover:-translate-y-1">
@@ -301,12 +329,18 @@
                 <div class="grid md:grid-cols-2 gap-12">
                     <div>
                         <h3 class="text-2xl font-semibold mb-4 text-gray-800">Professional Summary</h3>
-                        <p class="text-gray-600 mb-6">Experienced Lead SDET with 9+ years of expertise in application testing and designing Hybrid Automation Frameworks for Web, Windows, and APIs. Skilled in CI/CD, agile practices, and building robust GenAI tools. Passionate about automation and framework architecture.</p>
-                        <p class="text-gray-600 mb-6">I specialize in creating efficient automation solutions that enhance productivity and quality assurance processes. My expertise includes developing AI-powered tools that streamline testing workflows and improve team efficiency.</p>
+                        <p class="text-gray-600 mb-6">Senior Principal Software Engineer with 9+ years of experience in building scalable backend systems, AI-powered engineering platforms, and automation frameworks. Expertise in Java (Spring Boot), Python, and distributed systems, with hands-on experience in designing event-driven architectures using RabbitMQ and PostgreSQL.</p>
+                        <p class="text-gray-600 mb-6">Proficient in developing GenAI-driven solutions leveraging LangChain, LangGraph, RAG pipelines, LLM fine-tuning, and Langfuse observability to build autonomous and intelligent engineering systems. Strong background in API development, microservices architecture, and MCP-based integrations for scalable platform design. Brings deep expertise in automation architecture using PyTest, Selenium, and CI/CD pipelines (Jenkins, Docker), enabling high-quality, reliable software delivery.</p>
                         <div class="flex flex-wrap gap-3 mt-6">
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Automation</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">GenAI</span>
-                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Framework Design</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Java Spring Boot</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Python</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">GenAI Platforms</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">LangChain & LangGraph</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RAG & LLM Workflows</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Distributed Systems</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">RabbitMQ & PostgreSQL</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">MCP Integrations</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">Automation Architecture</span>
                             <span class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full">CI/CD</span>
                         </div>
                     </div>
@@ -329,7 +363,7 @@
                                     </div>
                                     <div>
                                         <h4 class="text-sm text-gray-500">Experience</h4>
-                                        <p class="font-medium">9+ Years in Testing & Automation</p>
+                                        <p class="font-medium">9+ Years in Backend, AI & Automation Engineering</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -338,7 +372,7 @@
                                     </div>
                                     <div>
                                         <h4 class="text-sm text-gray-500">Specialization</h4>
-                                        <p class="font-medium">GenAI, Automation Framework Design, Hybrid Automation Frameworks, Vibe Coder</p>
+                                        <p class="font-medium">Python, Java Backend APIs, GenAI Platforms, LangChain, RAG Pipelines, Distributed Systems, MCP Integrations</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -347,7 +381,7 @@
                                     </div>
                                     <div>
                                         <h4 class="text-sm text-gray-500">Innovation</h4>
-                                        <p class="font-medium">AI-Powered Testing Solutions</p>
+                                        <p class="font-medium">AI Agents, Autonomous Release Systems, GenAI Testing Platforms</p>
                                     </div>
                                 </div>
                             </div>
@@ -1093,25 +1127,24 @@
                         </div>
                     </div>
                     <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Involved in writing automation scripts for multiple products using Robot, PyTest, and WebdriverIO frameworks.</li>
-                        <li>Designed, built, and maintained a comprehensive PyTest framework and WebdriverIO-based UI automation framework.</li>
-                        <li>Designed and developed DeepEval framework for evaluating LLM-based applications and agentic systems, ensuring quality and reliability of AI-powered solutions.</li>
-                        <li>Wrote comprehensive test cases for agentic frameworks to validate autonomous decision-making, tool integration, and multi-agent orchestration capabilities.</li>
-                        <li>Enhanced productivity and efficiency for Dev & QA teams by implementing multiple Jenkins tools with a left shift approach.</li>
-                        <li>Designed and implemented an advanced AI-powered chatbot to assist publishers, solution engineers & internal engineering team in automating routine tasks and enhancing productivity using GenAI technologies including RAG, LangChain, LangGraph, Langfuse, Transformers, Hugging Face models, MCP server, and agentic frameworks for autonomous & real-time decision-making.</li>
-                        <li>Designed and developed an AI-powered centralized release management portal where autonomous agents collaborate to manage the full release lifecycle—from planning and validation to deployment and post-deployment monitoring.</li>
-                        <li>Developed a Test Case Generator using Gen AI and Streamlit that integrates with Jira, Confluence & user inputs and automatically generates test cases.</li>
-                        <li>Streamlined code review process by integrating Bito code review agent in Git, resulting in automated pull request reviews.</li>
-                        <li>Developed a comprehensive automation framework to facilitate cross-functional team integration testing without requiring manual intervention.</li>
-                        <li>Defined and tracked quality assurance metrics, including test results, defect counts, and performance discrepancies.</li>
-                        <li>Integrated local QA Jenkins pipeline to Dev Centralized Jenkins CI pipeline.</li>
-                        <li>Maintained traceability matrix, shared test summary reports on a weekly basis.</li>
-                        <li>Managed various BHAG projects within the SDET organization including GenAI, Code Coverage, and Grafana dashboard logging.</li>
-                        <li>Demonstrated hands-on experience in SQL, Unix, Docker, Selenium, WebdriverIO, and API testing.</li>
-                        <li>Streamlined and optimized the testing process, achieving a significant reduction in execution time for more than 2000 test cases – from an average of 6 hours down to only 1 hour.</li>
-                        <li>Managed SDET team of 5 as team lead.</li>
-                        <li>Contributed many features to Prebid.js open source repo which deals with programmatic advertisement.</li>
-                        <li>Collaborated with cross-functional team members, including product owners and developers to develop effective testing strategies and deliverables.</li>
+                        <li>Designed and developed high-scale backend services using Java (Spring Boot) for ad bidding, request processing, and campaign execution in a distributed system.</li>
+                        <li>Built event-driven microservices using RabbitMQ and PostgreSQL, enabling asynchronous processing, fault tolerance, and horizontal scalability.</li>
+                        <li>Developed and exposed internal services via MCP Server architecture, enabling standardized, secure API integrations across systems.</li>
+                        <li>Designed and optimized RESTful APIs with JSON-based communication, focusing on performance, scalability, and low-latency processing.</li>
+                        <li>Architected and developed an AI-powered Slack chatbot platform using Python, LangChain, LangGraph, Langfuse, HuggingFace Transformers, and RAG pipelines, reducing 25–30% of operational workload.</li>
+                        <li>Built an Autonomous Release Management System using LangChain, LangGraph, RAG pipelines, and LLM orchestration, automating end-to-end release lifecycle planning, validation, deployment, and monitoring.</li>
+                        <li>Developed a GenAI Test Case Generation platform using Python, Streamlit, and integrations with Jira and Confluence APIs, enabling dynamic test creation from requirements.</li>
+                        <li>Engineered a DeepEval framework for LLM evaluation, validating agentic workflows, prompt quality, and model performance with integrated observability.</li>
+                        <li>Designed scalable UI and API automation frameworks using PyTest, WebdriverIO, Selenium, and Python, ensuring reliability across distributed backend systems.</li>
+                        <li>Built API automation suites using PyTest and Requests library, validating backend services and microservice integrations.</li>
+                        <li>Reduced execution time of 2000+ test cases from 6 hours to ~1 hour using parallel execution, framework optimization, and CI integration.</li>
+                        <li>Integrated automation and services into CI/CD pipelines using Jenkins, Git, Docker, and Groovy, enabling shift-left testing and continuous validation.</li>
+                        <li>Defined and tracked quality engineering metrics including test coverage, defect density, and performance benchmarks using data-driven dashboards.</li>
+                        <li>Automated code review workflows using Bito AI integrated with Git, improving pull request quality and developer productivity.</li>
+                        <li>Built observability and monitoring solutions using Grafana, enabling insights into system performance and AI workflows.</li>
+                        <li>Led and mentored SDET and SDE teams of 3–5 engineers, driving adoption of scalable architecture, AI-first development, and engineering best practices.</li>
+                        <li>Owned and delivered multiple 0→1 initiatives in GenAI platforms, automation systems, and engineering productivity tools.</li>
+                        <li>Contributed to Prebid.js, implementing features for the programmatic advertising and header bidding ecosystem.</li>
                     </ul>
                 </div>
                 
@@ -1841,5 +1874,15 @@ ${message}`;
     <!-- DOCX to PDF conversion scripts -->
     <script src="js/docx-pdf-converter.js"></script>
     <script src="js/docx2pdf.js"></script>
+    
+    <!-- 3D Interactive & Voice Assistant -->
+    <script src="js/3d-engine.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    
+    <!-- Futuristic Theme & 3D Features -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="js/futuristic-theme.js"></script>
+    <script src="js/tech-spheres-3d.js"></script>
+    <script src="js/avatar-3d-guide.js"></script>
 </body>
 </html>

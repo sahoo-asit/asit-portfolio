@@ -1,7 +1,11 @@
-// Portfolio AI Assistant
+// Portfolio AI Assistant (legacy - hidden when voice assistant is active)
 document.addEventListener('DOMContentLoaded', function() {
-    // Create the chatbot UI
+    // Create the chatbot UI but keep it hidden (voice assistant replaces it)
     createChatbotUI();
+    
+    // Hide legacy chatbot - voice assistant handles this now
+    const legacyBot = document.getElementById('portfolio-assistant');
+    if (legacyBot) legacyBot.style.display = 'none';
     
     // Initialize the chatbot functionality
     initChatbot();
@@ -317,8 +321,8 @@ const knowledgeBase = {
             linkedin: "https://www.linkedin.com/in/sahooasit",
             github: "https://github.com/pm-asit-sahoo",
             education: "Bachelor of Technology in Electronics and Communication Engineering from ITER, SOA University, Bhubaneswar (CGPA: 9.3)",
-            summary: "Experienced Senior Principal Software Engineer with 9+ years of expertise in designing and implementing Hybrid Automation Frameworks for Web, Windows, and API applications. Proficient in leveraging Generative AI to enhance quality engineering processes, building robust AI-powered testing solutions, and enabling CI/CD-driven automation. Also works on backend engineering within the DSP layer of the programmatic advertising ecosystem, developing Java-based APIs and distributed services.",
-            specialization: "GenAI, Automation Framework Design, Backend API Development, RAG Architecture, LangChain, MCP Server, Vibe Coding",
+            summary: "Senior Principal Software Engineer with 9+ years of experience in building scalable backend systems, AI-powered engineering platforms, and automation frameworks. Expertise in Java Spring Boot, Python, distributed systems, RabbitMQ, PostgreSQL, GenAI platforms, RAG pipelines, LangChain, LangGraph, Langfuse, and MCP-based integrations.",
+            specialization: "Java Backend APIs, GenAI Platforms, Distributed Systems, MCP Integrations, Automation Architecture",
             languages: ["English (Fluent C2)", "Hindi (Proficient C2)", "Odia (Proficient C2)"]
         },
         skills: {
@@ -451,17 +455,22 @@ const knowledgeBase = {
             {
                 company: "PubMatic",
                 role: "Senior Principal Software Engineer 1",
-                period: "March 2026 - Present",
+                period: "November 2021 - Present",
                 responsibilities: [
-                    "Designing and developing Java-based backend APIs supporting high-scale services in the DSP layer",
-                    "Working on MCP server architecture to expose internal application APIs as ADCP-compliant services",
-                    "Developing and optimizing services using PostgreSQL and RabbitMQ-based messaging pipelines",
-                    "Building UI automation using WebdriverIO and API automation using PyTest"
+                    "Designed and developed high-scale backend services using Java Spring Boot for ad bidding, request processing, and campaign execution in a distributed system",
+                    "Built event-driven microservices using RabbitMQ and PostgreSQL for asynchronous processing, fault tolerance, and horizontal scalability",
+                    "Developed and exposed internal services via MCP Server architecture for standardized and secure API integrations",
+                    "Designed and optimized RESTful APIs with JSON-based communication for performance, scalability, and low-latency processing",
+                    "Architected an AI-powered Slack chatbot platform using Python, LangChain, LangGraph, Langfuse, HuggingFace Transformers, and RAG pipelines",
+                    "Built an Autonomous Release Management System using LangChain, LangGraph, RAG pipelines, and LLM orchestration",
+                    "Developed a GenAI Test Case Generation platform using Python, Streamlit, Jira APIs, and Confluence APIs",
+                    "Engineered a DeepEval framework for LLM evaluation and agentic workflow validation",
+                    "Designed scalable UI and API automation frameworks using PyTest, WebdriverIO, Selenium, and Python"
                 ],
                 achievements: [
-                    "Architected backend APIs for high-scale DSP services in programmatic advertising",
-                    "Implemented MCP server integrations for secure API enablement",
-                    "Built scalable event-driven architectures using RabbitMQ"
+                    "Reduced 25 to 30 percent of operational workload through AI-powered engineering platforms",
+                    "Reduced execution time of 2000 plus test cases from 6 hours to around 1 hour",
+                    "Delivered multiple 0 to 1 initiatives in GenAI platforms, automation systems, and engineering productivity tools"
                 ]
             },
             {

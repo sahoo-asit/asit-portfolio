@@ -439,7 +439,7 @@ async function createTailoredResume(options) {
             console.warn('ResumeCustomizer not found, falling back to default resume');
             
             // Load the base resume template using fetch
-            const response = await fetch('Asit Resume_Lead_SDET.docx');
+            const response = await fetch('Asit_Sahoo_Resume_Principal_SDE.docx');
             if (!response.ok) {
                 throw new Error('Failed to load resume template');
             }

@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadButton.addEventListener('click', function(e) {
             e.preventDefault();
             
-            const docxPath = 'Asit Resume_Lead_SDET.docx';
-            const fileName = 'Asit Resume_Lead_SDET';
+            const docxPath = 'Asit_Sahoo_Resume_Principal_SDE.docx';
+            const fileName = 'Asit_Sahoo_Resume_Principal_SDE';
             
             // Show loading state
             const originalText = downloadButton.innerHTML;

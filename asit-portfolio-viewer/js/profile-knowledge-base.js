@@ -17,13 +17,16 @@ const profileKnowledgeBase = {
     },
 
     // Professional Summary
-    summary: `Experienced Senior Principal Software Engineer with 9+ years of expertise in designing and implementing 
-    Hybrid Automation Frameworks for Web, Windows, and API applications. Proficient in leveraging Generative AI to 
-    enhance quality engineering processes, building robust AI-powered testing solutions, and enabling CI/CD-driven 
-    automation. Adept in Agile methodologies, test strategy, and framework architecture. Also works on backend 
-    engineering within the DSP layer of the programmatic advertising ecosystem, developing Java-based APIs and 
-    distributed services that power large-scale ad technology platforms. Passionate about building AI-first 
-    engineering systems, autonomous developer platforms, and intelligent automation frameworks.`,
+    summary: `Senior Principal Software Engineer with 9+ years of experience in building scalable backend systems, 
+    AI-powered engineering platforms, and automation frameworks. Expertise in Java (Spring Boot), Python, and 
+    distributed systems, with hands-on experience in designing event-driven architectures using RabbitMQ and 
+    PostgreSQL. Proficient in developing GenAI-driven solutions leveraging LangChain, LangGraph, RAG pipelines, 
+    LLM fine-tuning, and Langfuse observability to build autonomous and intelligent engineering systems. Strong 
+    background in API development, microservices architecture, and MCP-based integrations for scalable platform 
+    design. Brings deep expertise in automation architecture using PyTest, Selenium, and CI/CD pipelines 
+    (Jenkins, Docker), enabling high-quality, reliable software delivery. Adept at leading engineering teams, 
+    driving 0→1 initiatives, and building AI-first platforms that significantly improve developer productivity 
+    and operational efficiency.`,
 
     // Education
     education: [
@@ -59,18 +62,29 @@ const profileKnowledgeBase = {
             role: "Senior Principal Software Engineer 1",
             company: "PubMatic",
             location: "Pune",
-            period: "March 2026 - Present",
+            period: "November 2021 - Present",
             duration: "Current Role",
             responsibilities: [
-                "Designing and developing Java-based backend APIs supporting high-scale services in the DSP (Demand Side Platform) layer of the digital programmatic advertising ecosystem",
-                "Working on MCP server architecture to expose internal application APIs as ADCP-compliant services, enabling secure and standardized access",
-                "Developing and optimizing services using PostgreSQL for persistent storage",
-                "Implementing RabbitMQ-based messaging pipelines to support asynchronous workflows and scalable event-driven communication across microservices",
-                "Building UI automation using WebdriverIO",
-                "Developing API automation using PyTest",
-                "Implementing scalable test strategies to ensure reliability across distributed services and release cycles"
+                "Designed and developed high-scale backend services using Java (Spring Boot) for ad bidding, request processing, and campaign execution in a distributed system",
+                "Built event-driven microservices using RabbitMQ and PostgreSQL, enabling asynchronous processing, fault tolerance, and horizontal scalability",
+                "Developed and exposed internal services via MCP Server architecture, enabling standardized, secure API integrations across systems",
+                "Designed and optimized RESTful APIs with JSON-based communication, focusing on performance, scalability, and low-latency processing",
+                "Architected and developed an AI-powered Slack chatbot platform using Python, LangChain, LangGraph, Langfuse, HuggingFace Transformers, and RAG pipelines, reducing ~25–30% of operational workload",
+                "Built an Autonomous Release Management System using LangChain, LangGraph, RAG pipelines, and LLM orchestration, automating end-to-end release lifecycle planning, validation, deployment, and monitoring",
+                "Developed a GenAI Test Case Generation platform using Python, Streamlit, and integrations with Jira and Confluence APIs, enabling dynamic test creation from requirements",
+                "Engineered a DeepEval framework for LLM evaluation, validating agentic workflows, prompt quality, and model performance with integrated observability",
+                "Designed scalable UI and API automation frameworks using PyTest, WebdriverIO, Selenium, and Python, ensuring reliability across distributed backend systems",
+                "Built API automation suites using PyTest and Requests library, validating backend services and microservice integrations",
+                "Reduced execution time of 2000+ test cases from 6 hours to ~1 hour using parallel execution, framework optimization, and CI integration",
+                "Integrated automation and services into CI/CD pipelines using Jenkins, Git, Docker, and Groovy, enabling shift-left testing and continuous validation",
+                "Defined and tracked quality engineering metrics including test coverage, defect density, and performance benchmarks using data-driven dashboards",
+                "Automated code review workflows using Bito AI integrated with Git, improving pull request quality and developer productivity",
+                "Built observability and monitoring solutions using Grafana, enabling insights into system performance and AI workflows",
+                "Led and mentored SDET and SDE teams of 3–5 engineers, driving adoption of scalable architecture, AI-first development, and engineering best practices",
+                "Owned and delivered multiple 0→1 initiatives in GenAI platforms, automation systems, and engineering productivity tools",
+                "Contributed to Prebid.js (JavaScript, open-source), implementing features for programmatic advertising and header bidding ecosystem"
             ],
-            keywords: ["java", "backend", "api", "dsp", "mcp server", "postgresql", "rabbitmq", "webdriverio", "pytest", "microservices", "event-driven"]
+            keywords: ["java", "spring boot", "backend", "api", "dsp", "mcp server", "postgresql", "rabbitmq", "langchain", "langgraph", "rag", "deepeval", "webdriverio", "pytest", "microservices", "event-driven", "genai", "grafana", "prebid"]
         },
         {
             role: "Senior Lead Software Development Engineer in Test 1",
