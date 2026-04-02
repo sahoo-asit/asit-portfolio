@@ -30,12 +30,37 @@
     ];
 
     let scene, camera, renderer, spheres = [], container;
-    let mouseX = 0, mouseY = 0;
     let targetRotationX = 0, targetRotationY = 0;
     let isDragging = false;
     let highlightedSphere = null;
+    let isInitialized = false;
+    let isThreeReady = false;
+    let animationFrameId = null;
+
+    function isMobileViewport() {
+        return window.innerWidth < 768;
+    }
+
+    function shouldUse3D() {
+        return !isMobileViewport() && supportsWebGL() && typeof THREE !== 'undefined';
+    }
+
+    function supportsWebGL() {
+        try {
+            const canvas = document.createElement('canvas');
+            return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+        } catch (error) {
+            return false;
+        }
+    }
 
     function init() {
+        if (isInitialized || document.getElementById('tech-spheres-container')) {
+            return;
+        }
+
+        isInitialized = true;
+
         // Create container for tech spheres section
         container = document.createElement('div');
         container.id = 'tech-spheres-container';
@@ -59,11 +84,8 @@
         }
 
         injectStyles();
-        initThreeJS();
-        createSpheres();
         renderLegend();
-        animate();
-        addEventListeners();
+        observeAndLoad();
     }
 
     function injectStyles() {
@@ -97,9 +119,61 @@
                 width: 100%;
                 height: 100%;
                 cursor: grab;
+                position: relative;
             }
             #tech-spheres-canvas:active {
                 cursor: grabbing;
+            }
+            .tech-spheres-fallback {
+                width: 100%;
+                min-height: 520px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 18px;
+                align-content: center;
+                justify-items: center;
+                padding: 160px 24px 180px;
+                box-sizing: border-box;
+            }
+            .tech-sphere-fallback-item {
+                width: 102px;
+                height: 102px;
+                border-radius: 999px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                text-align: center;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                padding: 10px;
+                box-shadow: inset 0 2px 12px rgba(255,255,255,0.28), 0 18px 32px rgba(0,0,0,0.24);
+                border: 1px solid rgba(255,255,255,0.18);
+                background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.96), rgba(255,255,255,0.35) 28%, rgba(10,10,15,0.12) 60%), linear-gradient(135deg, rgba(0,212,255,0.5), rgba(102,126,234,0.6), rgba(118,75,162,0.82));
+            }
+            .tech-sphere-fallback-item img {
+                width: 34px;
+                height: 34px;
+                object-fit: contain;
+                background: rgba(255,255,255,0.96);
+                padding: 4px;
+                border-radius: 10px;
+            }
+            .tech-sphere-fallback-item span {
+                display: block;
+                line-height: 1.2;
+            }
+            .tech-spheres-loading {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: rgba(255,255,255,0.78);
+                font-size: 14px;
+                letter-spacing: 0.08em;
             }
             .tech-spheres-overlay {
                 position: absolute;
@@ -188,6 +262,16 @@
                     min-height: 760px;
                     padding-bottom: 180px;
                 }
+                .tech-spheres-fallback {
+                    min-height: 480px;
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    padding: 150px 20px 190px;
+                    gap: 16px;
+                }
+                .tech-sphere-fallback-item {
+                    width: 96px;
+                    height: 96px;
+                }
                 .tech-spheres-legend {
                     width: calc(100% - 24px);
                     bottom: 72px;
@@ -211,53 +295,107 @@
         document.body.appendChild(tooltip);
     }
 
+    function observeAndLoad() {
+        const section = container.querySelector('.tech-spheres-section');
+        const canvasContainer = document.getElementById('tech-spheres-canvas');
+        if (!section || !canvasContainer) return;
+
+        canvasContainer.innerHTML = '<div class="tech-spheres-loading">Loading tech stack...</div>';
+
+        const loadVisualization = () => {
+            if (isThreeReady) return;
+
+            if (shouldUse3D()) {
+                const threeInitialized = initThreeJS();
+                if (threeInitialized) {
+                    createSpheres();
+                    animate();
+                    addEventListeners();
+                    isThreeReady = true;
+                    return;
+                }
+            }
+
+            renderFallbackSpheres();
+        };
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        observer.disconnect();
+                        loadVisualization();
+                    }
+                });
+            }, { rootMargin: '160px 0px' });
+
+            observer.observe(section);
+        } else {
+            loadVisualization();
+        }
+    }
+
     function initThreeJS() {
         const canvasContainer = document.getElementById('tech-spheres-canvas');
+        if (!canvasContainer) return false;
+
+        const width = Math.max(canvasContainer.clientWidth, 320);
+        const height = Math.max(canvasContainer.clientHeight, isMobileViewport() ? 420 : 620);
         
-        scene = new THREE.Scene();
-        scene.fog = new THREE.Fog(0x0a0a0f, 5, 25);
+        try {
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x0a0a0f, 5, 25);
 
-        camera = new THREE.PerspectiveCamera(60, canvasContainer.clientWidth / canvasContainer.clientHeight, 0.1, 1000);
-        camera.position.z = 12;
+            camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+            camera.position.z = 12;
 
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setClearColor(0x0a0a0f, 1);
-        canvasContainer.appendChild(renderer.domElement);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+            renderer.setClearColor(0x0a0a0f, 1);
+            canvasContainer.innerHTML = '';
+            canvasContainer.appendChild(renderer.domElement);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-        scene.add(ambientLight);
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+            scene.add(ambientLight);
 
-        const pointLight1 = new THREE.PointLight(0x00d4ff, 1, 50);
-        pointLight1.position.set(10, 10, 10);
-        scene.add(pointLight1);
+            const pointLight1 = new THREE.PointLight(0x00d4ff, 1, 50);
+            pointLight1.position.set(10, 10, 10);
+            scene.add(pointLight1);
 
-        const pointLight2 = new THREE.PointLight(0x764ba2, 0.8, 50);
-        pointLight2.position.set(-10, -10, 5);
-        scene.add(pointLight2);
+            const pointLight2 = new THREE.PointLight(0x764ba2, 0.8, 50);
+            pointLight2.position.set(-10, -10, 5);
+            scene.add(pointLight2);
 
-        const pointLight3 = new THREE.PointLight(0xff006e, 0.5, 50);
-        pointLight3.position.set(0, 10, -10);
-        scene.add(pointLight3);
+            const pointLight3 = new THREE.PointLight(0xff006e, 0.5, 50);
+            pointLight3.position.set(0, 10, -10);
+            scene.add(pointLight3);
 
-        // Handle resize
-        window.addEventListener('resize', () => {
-            camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
-        });
+            // Handle resize
+            window.addEventListener('resize', () => {
+                const nextWidth = Math.max(canvasContainer.clientWidth, 320);
+                const nextHeight = Math.max(canvasContainer.clientHeight, isMobileViewport() ? 420 : 620);
+                camera.aspect = nextWidth / nextHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(nextWidth, nextHeight);
+            });
+
+            return true;
+        } catch (error) {
+            console.warn('Tech spheres 3D initialization failed, using fallback:', error);
+            return false;
+        }
     }
 
     function createSpheres() {
-        const textureLoader = new THREE.TextureLoader();
         const sphereGroup = new THREE.Group();
         scene.add(sphereGroup);
+        spheres = [];
 
         techLogos.forEach((tech, index) => {
             // Create sphere with glossy material
-            const geometry = new THREE.SphereGeometry(0.8, 64, 64);
+            const geometry = new THREE.SphereGeometry(0.8, isMobileViewport() ? 28 : 48, isMobileViewport() ? 28 : 48);
             
             // Create a canvas to draw the logo on white background
             const canvas = document.createElement('canvas');
@@ -291,6 +429,14 @@
                 const x = (512 - size) / 2;
                 const y = (512 - size) / 2;
                 ctx.drawImage(img, x, y, size, size);
+                canvasTexture.needsUpdate = true;
+            };
+            img.onerror = () => {
+                ctx.fillStyle = '#111827';
+                ctx.font = 'bold 74px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(tech.name.charAt(0), 256, 256);
                 canvasTexture.needsUpdate = true;
             };
             img.src = tech.url;
@@ -354,6 +500,29 @@
         });
     }
 
+    function renderFallbackSpheres() {
+        const canvasContainer = document.getElementById('tech-spheres-canvas');
+        if (!canvasContainer) return;
+
+        canvasContainer.innerHTML = `
+            <div class="tech-spheres-fallback">
+                ${techLogos.map((tech) => `
+                    <div class="tech-sphere-fallback-item" style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.96), rgba(255,255,255,0.35) 28%, rgba(10,10,15,0.12) 60%), linear-gradient(135deg, ${hexToRgba(tech.color, 0.45)}, rgba(102,126,234,0.65), rgba(118,75,162,0.86));">
+                        <img src="${tech.url}" alt="${tech.name} logo" loading="lazy">
+                        <span>${tech.name}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function hexToRgba(hex, alpha) {
+        const red = (hex >> 16) & 255;
+        const green = (hex >> 8) & 255;
+        const blue = hex & 255;
+        return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+    }
+
     function focusSphere(index, snapRotation = false) {
         highlightedSphere = spheres[index] || null;
         document.querySelectorAll('.tech-legend-item').forEach((item) => {
@@ -374,7 +543,9 @@
     }
 
     function animate() {
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
+
+        if (!renderer || !scene || !camera) return;
 
         const time = Date.now() * 0.001;
         const sphereGroup = scene.userData.sphereGroup;
@@ -410,6 +581,8 @@
 
     function addEventListeners() {
         const canvasContainer = document.getElementById('tech-spheres-canvas');
+        if (!canvasContainer) return;
+
         let previousMouseX = 0, previousMouseY = 0;
 
         canvasContainer.addEventListener('mousedown', (e) => {
@@ -466,8 +639,11 @@
 
     function checkHover(e) {
         const canvasContainer = document.getElementById('tech-spheres-canvas');
+        if (!canvasContainer || !camera || !renderer || !spheres.length) return;
+
         const rect = canvasContainer.getBoundingClientRect();
         const tooltip = document.getElementById('tech-tooltip');
+        if (!tooltip) return;
         
         const mouse = new THREE.Vector2(
             ((e.clientX - rect.left) / rect.width) * 2 - 1,
@@ -501,18 +677,8 @@
 
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof THREE !== 'undefined') {
-                init();
-            } else {
-                setTimeout(init, 500);
-            }
-        });
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-        if (typeof THREE !== 'undefined') {
-            init();
-        } else {
-            setTimeout(init, 500);
-        }
+        init();
     }
 })();

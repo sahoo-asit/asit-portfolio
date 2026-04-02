@@ -4,8 +4,42 @@
 (function() {
     'use strict';
 
+    const isMobileViewport = () => window.innerWidth < 768;
+    const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+    const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function initSimpleNavScroll() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+
+        const updateNav = () => {
+            nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+        };
+
+        updateNav();
+        window.addEventListener('scroll', updateNav, { passive: true });
+    }
+
     function initScrollAnimations() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            initSimpleNavScroll();
+            return;
+        }
+
         gsap.registerPlugin(ScrollTrigger);
+
+        if (isMobileViewport() || prefersReducedMotion()) {
+            initSimpleNavScroll();
+
+            document.querySelectorAll('.bg-blue-600.h-2.rounded-full').forEach(bar => {
+                const width = bar.dataset.finalWidth || bar.style.width;
+                if (width) {
+                    bar.style.width = width;
+                }
+            });
+
+            return;
+        }
 
         // Navbar glass effect on scroll
         ScrollTrigger.create({
@@ -209,6 +243,8 @@
 
     // 3D Tilt Effect for Cards
     function initTiltCards() {
+        if (isMobileViewport() || isTouchDevice() || prefersReducedMotion()) return;
+
         const cards = document.querySelectorAll('.bg-white.rounded-lg, .modern-card, .border-t-4');
         
         cards.forEach(card => {
@@ -235,6 +271,8 @@
 
     // Magnetic buttons
     function initMagneticButtons() {
+        if (isMobileViewport() || isTouchDevice() || prefersReducedMotion()) return;
+
         const buttons = document.querySelectorAll('a.rounded-full, button');
         
         buttons.forEach(btn => {
@@ -253,7 +291,7 @@
 
     // Cursor trail effect
     function initCursorTrail() {
-        if (window.innerWidth < 768) return; // Skip on mobile
+        if (isMobileViewport() || isTouchDevice() || prefersReducedMotion()) return;
 
         const cursor = document.createElement('div');
         cursor.id = 'custom-cursor';
@@ -303,6 +341,8 @@
 
     // Text scramble effect for headings
     function initTextScramble() {
+        if (isMobileViewport() || prefersReducedMotion()) return;
+
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         
         function scrambleText(element) {
